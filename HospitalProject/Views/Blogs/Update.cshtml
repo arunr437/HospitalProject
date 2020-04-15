@@ -1,0 +1,30 @@
+﻿@using HospitalProject.Models
+@model HospitalProject.Models.Blog
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <section class="container py-5">
+        <h2 class="text-center text-secondary py-3">Edit Post</h2>
+        @*A form similar to add blog page with populated data  *@
+        @using (Html.BeginForm("Update", "Blogs"))
+        {
+            @*How to set the value using html helpers :
+             https://stackoverflow.com/questions/3034986/how-to-set-a-default-value-with-html-textboxfor
+             *@
+        <div class="form-group">
+            @Html.LabelFor(b => b.Title, new { @class = "font-weight-bold text-secondary" })
+
+            @Html.TextBoxFor(b => b.Title, new { Value = Model.Title, @class = "form-control" })
+
+        </div>
+        <div class="form-group">
+            @Html.TextArea("Body", Model.Body, new { @class = "form-control", @cols = 30, @rows = 10 })
+        </div>
+            <button class="btn btn-primary" type="submit" name="submit">Save</button>
+            <a href="/Blogs/ListAdmin" class="btn btn-secondary">Cancel</a>
+        }
+
+    </section>

@@ -1,0 +1,63 @@
+﻿@model HospitalProject.Models.ViewModels.ShowFeedbackType
+@{
+    ViewBag.Title = "ShowType";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <section class="container py-5">
+        <div class="row">
+            <div class="card w-50 p-1">
+                <div class="card-header">
+                    <h2>Feedback Type: @Model.type.name</h2>
+                </div>
+                <div class="card-body">
+                    <h3>Departments assosiated:</h3>
+                    <a href="/Feedbacks/AddDepartment" class="btn btn-success mb-2">Add</a>
+                    @{
+                        foreach (var item in Model.departments)
+                        {
+                            <div class="alert alert-primary">
+                                <h4><a href="/Departments/Show/@item.id">@item.name</a> </h4>
+                                <a href="/Feedback/DeleteType/@item.id">Delete</a>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        @{
+            if (Model.feedbacks.Count == 0)
+            {
+                <p class="text-muted">No feedbacks for this type</p>
+            }
+            else
+            {
+                <h2>Feedbacks for this feedback type:</h2>
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Feedback</th>
+                        <th>Type</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model.feedbacks)
+                    {
+                        <tr>
+                            <td>@item.FirstName @item.LastName</td>
+                            <td>@item.Email</td>
+                            <td>@item.Feedback</td>
+                            <td>@item.FeedbackType.name</td>
+                            <td>
+                                <a href="/Feedbacks/Update/@item.id" class="btn btn-danger rounded">Update</a>
+                                <a href="/Feedbacks/Delete/@item.id" class="btn btn-info rounded">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        }
+
+
+    </section>
+

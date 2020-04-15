@@ -1,0 +1,112 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/Scripts/src/Admin.js" type="text/javascript"></script>
+    @Styles.Render("~/Content/css")
+</head>
+
+<body>
+    <form method="post" action="/Job/ListJobsAdmin" id="admin" onsubmit="return loginCheck()">
+        <input type="submit" value="Admin" />
+    </form>
+    <header class="container-fluid">
+        <nav class="navbar navbar-light container">
+            <a class="navbar-brand"><img class="img-fluid" src="@Url.Content("~/Content/images/Logo.png")" alt="Logo Image, Link to the home page"></a>
+            <form class="form-inline">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                    </div>
+                    <input type="text" class="form-control mr-2" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
+                    <button class="d-none" type="submit" name="submit"></button>
+                </div>
+                <a href="@Url.Action("Add", "Donations")" class="btn btn-primary">Donate Now!</a>
+            </form>
+        </nav>
+
+
+        <div class="container" id="main-menu">
+
+            <div class="nav nav-pills nav-fill">
+                <a class="nav-item nav-link active" href="@Url.Action("Index", "Home")">HOME</a>
+                <a class="nav-item nav-link" href="#">ABOUT</a>
+                <a class="nav-item nav-link" href="@Url.Action("List", "Patients")">PATIENTS</a>
+                <a class="nav-item nav-link" href="#">SERVICES</a>
+                <a class="nav-item nav-link" href="/Job/ListJobs">CAREERS</a>
+                <a class="nav-item nav-link" href="@Url.Action("List", "Blogs")">NEWS</a>
+                <a class="nav-item nav-link" href="/FrequentlyAskedQuestion/ListFAQ">FAQ</a>
+            </div>
+
+        </div>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>
+        <div class="top-footer container py-5">
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid py-5" src="@Url.Content("~/Content/images/Logo.png")" alt="Logo Image">
+                    <p>The North Shore Health Network receives funding from the North East Local Health Integration Network.</p>
+                    <p> The opinions expressed in this publication do not necessarily represent the views of the North East Local Health Integration Network.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="py-5">COVID-19 Information</h5>
+                    <div class="py-3">
+                        <a class="quick-link" href="#"> <i class="fa fa-circle-thin"></i> How to isolate yourself at home when you have COVID-19</a>
+                    </div>
+                    <div class="py-3">
+                        <a class="quick-link" href="#"> <i class="fa fa-circle-thin"></i> COVID-19 ASSESSMENT Form</a>
+                    </div>
+                    <div class="py-3">
+                        <a class="quick-link" href="#"> <i class="fa fa-circle-thin"></i> General Questions</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="py-5">Other Links</h5>
+                    <div class="py-3">
+                        <a class="quick-link" href="#">Terms of Use</a>
+
+                    </div>
+                    <div class="py-3">
+
+                        <a class="quick-link" href="#">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="py-5">Contact Us</h5>
+                    <p>
+                        <i class="fa fa-phone"></i> <strong>COVID Assessment:</strong><br> 1-888-425-0321 <br>
+                        705-356-2265 ext. 2661
+                    </p>
+                    <p><i class="fa fa-phone"></i> <strong>Phone:</strong> 705-356-2265</p>
+                    <p>
+                        <i class="fa fa-map-marker-alt"></i> <strong>Address: Blind River Site</strong><br>
+                        525 Causley St., P.O. Box 970, Blind River, ON   P0R 1B0
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid bg-light py-3">
+
+            <div class="container text-center">
+                &copy; Copyrights, All Rights Reserved. @DateTime.Now.Year
+            </div>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+
+</html>

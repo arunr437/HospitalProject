@@ -1,0 +1,61 @@
+﻿@model HospitalProject.Models.ViewModels.JobApplications
+@{
+    ViewBag.Title = "ShowJobAdmin";
+}
+
+@*This page shows the details of a particular job and the List of people who have applied for that job. Admin can also reject a particular Applicant.*@ 
+
+@*Details of a particular job*@
+<section class="jobMain">
+    <h2>Job Details</h2>
+    @*Below code will display details about the Job.*@
+    <table class="table table-bordered  table-hover">
+        <tr>
+            <td>Name:</td>
+            <td>@Model.job.name</td>
+        </tr>
+        <tr>
+            <td>Skill:</td>
+            <td>@Model.job.skill</td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td>@Model.job.description</td>
+        </tr>
+        <tr>
+            <td>Type:</td>
+            <td>@Model.job.type</td>
+        </tr>
+        <tr>
+            <td>Salary:</td>
+            <td>@Model.job.salary</td>
+        </tr>
+    </table>
+
+    @*Link styled as buttons to go back to the list page, Update the details and to delete the job*@
+    <a href="/Job/ListJobsAdmin/" class="btn btn-secondary">Back</a>
+    <a href="/Job/UpdateJobAdmin/@Model.job.jobId" class="btn btn-warning">Update</a>
+    <a href="/Job/DeleteJobAdmin/@Model.job.jobId" class="btn btn-danger">Delete</a>
+</section>
+
+@*This section shows the list of people who have applied for the job. The admin can Download Resuem, View,Edit or Reject an application here. *@
+<section style="padding-left:10%","padding-right:10%">
+    <div class="row">
+        @foreach (var application in @Model.applicantionList)
+         {
+            <div class="col-lg-4 pb-5">
+                <div class="card h-100 ">
+                    <div class="card-body">
+                        <h5 class="card-title">@application.firstName @application.lastName</h5>
+                        <h6 class="card-subtitle mb-2">@application.emailId</h6>
+                        <p class="card-text">@application.coverLetter</p>
+                        <a class="btn btn-primary" href='~/Content/resume/@application.resume' download="Resume-@application.firstName"><i class="fa fa-download"></i> Resume</a>
+                        <a href="/Application/ShowApplicationAdmin/@application.applicationId" class="btn btn-primary">View</a>
+                        <a href="/Application/UpdateApplicationAdmin/@application.applicationId" class="btn btn-warning">Edit</a>
+                        <a href="/Job/DeleteApplicationAdmin/@application.applicationId" class="btn btn-danger" onclick="return validate();">Reject</a>
+                    </div>
+                </div>
+            </div>
+         }
+    </div>
+</section>

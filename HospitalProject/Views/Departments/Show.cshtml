@@ -1,0 +1,36 @@
+﻿@model HospitalProject.Models.ViewModels.ShowDepartment
+@{
+    ViewBag.Title = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="container py-5">
+    <div class="row">
+        <div class="card w-50 p-1">
+            <div class="card-header">
+                <h2>Department: @Model.Department.name</h2>
+            </div>
+            <div class="card-body">
+                <p>Email: @Model.Department.email</p>
+                <p>Head: John Doe</p>
+                <p>Operating Budget: $152,200</p>
+            </div>
+        </div>
+        <div class="w-50 p-1">
+            <h3>Feedback Types assosiated:</h3>
+            <a href="/Feedbacks/AddDepartment" class="btn btn-success mb-2">Add</a>
+            @{
+                foreach (var item in Model.types)
+                {
+                    <div class="alert alert-primary">
+                        <h4><a href="/Feedbacks/ShowType/@item.typeId">@item.name</a> </h4>
+                        <a href="/Feedbacks/DetachDeparment/?typeId=@item.typeId&did=@Model.Department.id">Delete</a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    
+    
+</section>

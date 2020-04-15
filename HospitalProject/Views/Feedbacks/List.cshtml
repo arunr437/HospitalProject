@@ -1,0 +1,34 @@
+﻿@model IEnumerable<HospitalProject.Models.Feedbacks>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <section class="container py-5">
+
+        <a href="/Feedbacks/Add" class="btn btn-info">Add</a>
+        <p class="text-muted">Click here to add a Feedback</p>
+        <h2>List of all Feedbacks</h2>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Feedback</th>
+                <th>Type</th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FirstName @item.LastName</td>
+                    <td>@item.Email</td>
+                    <td>@item.Feedback</td>
+                    <td>@item.FeedbackType.name</td>
+                    <td>
+                        <a href="/Feedbacks/Update/@item.id" class="btn btn-danger rounded">Update</a>
+                        <a href="/Feedbacks/Delete/@item.id" class="btn btn-info rounded">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </section>

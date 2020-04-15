@@ -1,0 +1,53 @@
+﻿@model HospitalProject.Models.ViewModels.UpdateFeedback
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="container py-5">
+    <h2>Update feedback for @Model.Feedbacks.FirstName @Model.Feedbacks.LastName (ID: @Model.Feedbacks.id)</h2>
+    <form method="post" action="/Feedbacks/Update/@Model.Feedbacks.id">
+
+        <div class="form-row ">
+            <div class="form-group col-md-6">
+                <label>First Name:</label>
+                <input type="text" name="fname" class="form-control" value="@Model.Feedbacks.FirstName"/>
+
+            </div>
+            <div class="form-group col-md-6">
+                <label>Last Name:</label>
+                <input type="text" name="lname" class="form-control" value="@Model.Feedbacks.LastName"/>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Email:</label>
+                <input type="text" name="email" class="form-control" value="@Model.Feedbacks.Email"/>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Feedback Type:</label>
+                <select name="type" class="form-control">
+
+                    @{
+                        foreach (var item in Model.feedbackTypes)
+                        {
+                            var selected = "";
+                            if (Model.Feedbacks.typeId == item.typeId)
+                            {
+                                selected = "selected";
+                            }
+                            <option value="@item.typeId" @selected class="dropdown-item">@item.name</option>
+                        }
+                    }
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Feedback:</label>
+            <textarea name="feedback" class="form-control" rows="5">@Model.Feedbacks.Feedback
+
+            </textarea>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-success" />
+    </form>
+</section>

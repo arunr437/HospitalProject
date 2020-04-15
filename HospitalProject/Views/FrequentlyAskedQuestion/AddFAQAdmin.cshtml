@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "AddFAQAdmin";
+}
+
+<section class="jobMain">
+    <h2>Add FAQ</h2>
+
+    @*Form to Add a new FAQ into the FrequentlyAskedQuestion table*@
+    <form method="post" href="/FrequentlyAskedQuestion/AddFAQAdmin">
+        <div class="form-group">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Questions:</label>
+                <textarea class="form-control" id="questions" name="questions" rows="4" type="text" ></textarea>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Answers:</label>
+                <textarea class="form-control" id="answers" name="answers" rows="4" type="text" ></textarea>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Category:</label>
+                <select name="category" class="form-control">
+                    <option value="Hospital Stay">Hospital Stay</option>
+                    <option value="Costs">Costs</option>
+                    <option value="General">General</option>
+                </select>
+            </div>
+        </div>
+        <!-- Link styled as a button to go back to the list page-->
+        <a class="btn btn-default" href="/FrequentlyAskedQuestion/ListFAQAdmin">Back</a>
+        <!-- Button to submit the form-->
+        <input type="submit" class="btn btn-primary" value="Add Job">
+    </form>
+</section>

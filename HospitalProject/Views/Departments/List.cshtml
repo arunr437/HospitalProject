@@ -1,0 +1,32 @@
+﻿@model IEnumerable<HospitalProject.Models.Departments>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <section class="container py-5">
+        <a href="/Departments/Add" class="btn btn-info">Add</a>
+        <p class="text-muted">Click here to add a Department</p>
+        <h2>List of all Departments</h2>
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Department</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><a href="/Departments/Show/@item.id">@item.id</a></td>
+                    <td>@item.name</td>
+                    <td>@item.email</td>
+                    <td>
+                        <a href="/Departments/Update/@item.id" class="btn btn-danger rounded">Update</a>
+                        <a href="/Departments/Delete/@item.id" class="btn btn-info rounded">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </section>
+

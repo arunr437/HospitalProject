@@ -1,0 +1,21 @@
+﻿@model HospitalProject.Models.Donation
+@{
+    ViewBag.Title = "Warning!";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="container py-5">
+    <div class="text-center py-3">
+        <p class="display-4">Are you sure you want to permanently DELETE this record?</p>
+        <form action="/Donations/Delete/@Model.Id" method="post">
+            <button type="submit" name="delete" class="btn btn-primary">OK</button>
+            <a href="/Donations/List" class="btn btn-secondary">Cancel</a>
+        </form>
+
+
+    </div>
+
+</section>
+<hr />
+

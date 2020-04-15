@@ -1,0 +1,45 @@
+﻿@model HospitalProject.Models.Application
+@{
+    ViewBag.Title = "UpdateApplicationAdmin";
+}
+
+<section class="jobMain">
+    <h2>Update Application</h2>
+    @*Form to Add a new Application into the Applications table for the Admin.*@
+    <form method="post" href="/Application/UpdateApplicationAdmin">
+        @*Hidden Variables to pass the JobId and ApplicaitonId back to the controller*@
+        <input type="hidden" name="jobId" value="@Model.JobId" />
+        <input type="hidden" name="id" value="@Model.applicationId" />
+        <table class="table table-bordered  table-hover">
+            <tr>
+                <td width="20%"><label>First Name:</label></td>
+                <td width="80%">
+                    <input class="form-control" id="firstName" value="@Model.firstName" name="firstName" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td width="20%"><label>Last Name:</label></td>
+                <td width="80%">
+                    <input class="form-control" id="lastName" value="@Model.lastName" name="lastName" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td width="20%"><label>Email ID:</label></td>
+                <td width="80%">
+                    <input class="form-control" id="emailId" value="@Model.emailId" name="emailId" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td width="20%"><label>Cover Letter:</label></td>
+                <td width="80%">
+                    <textarea class="form-control" id="coverLetter" name="coverLetter" cols="5" type="text">@Model.coverLetter</textarea>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Link styled as a button to go back to the list page-->
+        <a class="btn btn-default" href="/Application/ListApplicationsAdmin">Back</a>
+        <!-- Link styled as a button to submit the form-->
+        <input type="submit" class="btn btn-primary" value="Update">
+    </form>
+</section>

@@ -1,0 +1,34 @@
+﻿@model List<HospitalProject.Models.FrequentlyAskedQuestion>
+@{
+    ViewBag.Title = "ListFAQAdmin";
+}
+
+
+<section class="jobMain">
+    <h2>Frequently Asked Questions</h2>
+
+    @*Below code will create a search box with a button which will be used to search for Page Title*@
+    <form action="/FrequentlyAskedQuestion/ListFAQ" method="get">
+        <input type="text" id="searchKey" name="searchKey" />
+        <button class="btn btn-primary">
+            <span class="glyphicon glyphicon-search"></span> Search
+        </button>
+    </form>
+
+    @*Below code will create a pagniation which will separate the records into discrete pages*@
+    <div>
+        @{
+            <a href="/FrequentlyAskedQuestion/ListFAQ?pagenum=@((int)ViewData["pageNum"]-1)&petsearchkey=@ViewData["searchKey"]">Prev</a>
+            @ViewData["pageSummary"]
+            <a href="/FrequentlyAskedQuestion/ListFAQ?pagenum=@((int)ViewData["pageNum"]+1)&petsearchkey=@ViewData["searchKey"]">Next</a>
+        }
+    </div>
+
+    @{
+        foreach (var faq in Model)
+        {
+            <h4>@faq.questions</h4>
+            <p>@faq.answers</p>
+        }
+    }
+</section>

@@ -1,0 +1,50 @@
+﻿@model HospitalProject.Models.ViewModels.UpdateNotification
+@{
+    ViewBag.Title = "Update";
+}
+    <section class="container py-5">
+        <h2>Update Notification (@Model.Notifications.headline)</h2>
+        <form method="post" action="/Notifications/Update/@Model.Notifications.id">
+            <label class="col-form-label">Headline</label>
+            <input type="text" name="headline" class="form-control" value="@Model.Notifications.headline" />
+            <label class="col-form-label">Content</label>
+            <textarea name="content" class="form-control">
+                @Model.Notifications.content
+            </textarea>
+
+            <div class="form-row mt-4">
+                <label class="col-form-label">Type</label>
+                <select name="type" class="dropdown">
+                    @{
+                        foreach (var type in Model.types)
+                        {
+                            if (Model.Notifications.typeId == type.id)
+                            {
+                                <option value="@type.id" class="dropdown-item" selected>@type.name</option>
+                            }
+                            else
+                            {
+                                <option value="@type.id" class="dropdown-item">@type.name</option>
+                            }
+
+                        }
+                    }
+                </select>
+
+            </div>
+            <div class="form-check mt-4">
+                @{
+                    if (Model.Notifications.active == 1)
+                    {
+                        <input type="checkbox" value="1" name="active" id="active" checked="true" class="form-check-input" />
+                    }
+                    else
+                    {
+                        <input type="checkbox" value="1" name="active" id="active" class="form-check-input"/>
+                    }
+                }
+                <label for="active" class="form-check-label">Set Active?</label>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-secondary mt-4" />
+        </form>
+    </section>

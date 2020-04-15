@@ -1,0 +1,35 @@
+﻿@model IEnumerable<HospitalProject.Models.NotificationTypes>
+
+@{
+    ViewBag.Title = "Add";
+}
+
+    <section class="container py-5">
+        <h2>Add Notification</h2>
+        <form method="post" action="/Notifications/Add" >
+            <label class="col-form-label">Headline</label>
+            <input type="text" name="headline" class="form-control" />
+            <label class="col-form-label">Content</label>
+            <textarea name="content" class="form-control">
+
+            </textarea>
+            
+            <div class="form-row mt-4">
+                <label class="col-form-label">Type</label>
+                <select name="type" class="dropdown">
+                    @{
+                        foreach (var type in Model)
+                        {
+                            <option value="@type.id" class="dropdown-item">@type.name</option>
+                        }
+                    }
+                </select>
+
+            </div>
+            <div class="form-check mt-4">
+                <input type="checkbox" value="1" name="active" id="active" class="form-check-input" />
+                <label for="active" class="form-check-label">Set Active?</label>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-secondary mt-4"/>
+        </form>
+    </section>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<HospitalProject.Models.Notifications>
+@{
+    ViewBag.Title = "List";
+}
+
+    <section class="container py-5">
+        <a href="/Notifications/Add" class="btn btn-info">Add</a>
+        <p class="text-muted">Click here to add a notification</p>
+        <h2>All Notifications</h2>
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Headline</th>
+                <th>Content</th>
+                <th>Type</th>
+                <th></th>
+            </tr>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.id</td>
+                    <td>@item.headline</td>
+                    <td>@item.content</td>
+                    <td>@item.Type.name</td>
+                    <td>
+                        <a href="/Notifications/Delete/@item.id" class="btn btn-danger rounded">Delete</a>
+                        <a href="/Notifications/Update/@item.id" class="btn btn-info rounded">Update</a>
+                    </td>
+                    
+                </tr>
+            }
+
+        </table>
+    </section>
+

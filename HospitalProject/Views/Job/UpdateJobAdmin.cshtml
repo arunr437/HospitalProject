@@ -1,0 +1,56 @@
+﻿@model HospitalProject.Models.Job
+@{
+    ViewBag.Title = "UpdateJobAdmin";
+}
+
+<section class="jobMain">
+    <h2>UpdateJob</h2>
+
+    @*Form is used to Update the details of a specific job posting by the Admin*@
+    <form method="post" href="/Job/UpdateJobAdmin">
+        <input type="hidden" name="id" value="@Model.jobId" />
+        <table class="table table-borderless">
+            <tr>
+                <td width="20%"><label>Job Name:</label></td>
+                <td width="80%">
+                    <input class="form-control" id="name" value="@Model.name" name="name" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td width="20%"><label>Job Skill:</label></td>
+                <td width="80%">
+                    <input class="form-control" id="skill" value="@Model.skill" name="skill" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td width="20%"><label>Job Description:</label></td>
+                <td width="80%">
+                    <textarea class="form-control" id="description" name="description" cols="9" type="text">@Model.description</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td width="20%"><label>Job Type:</label></td>
+                <td width="80%">
+                    <select class="form-control" name="type" id="type">
+                        <option value="Full-Time">Full-Time</option>
+                        <option value="Part-Time">Part-Time</option>
+                        <option value="Internship">Internship</option>
+                        <option value="Contract">Contract</option>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td width="20%"><label>Job Salary:</label></td>
+                <td width="80%">
+                    <input class="form-control" id="salary" value="@Model.salary" name="salary" type="text" />
+                </td>
+            </tr>
+        </table>
+
+        <!-- Link styled as a button to go back to the list page-->
+        <a class="btn btn-default" href="/Job/ListJobsAdmin">Back</a>
+        <!-- Button to submit the form-->
+        <input type="submit" class="btn btn-primary" value="Update">
+    </form>
+</section>

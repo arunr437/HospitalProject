@@ -1,0 +1,54 @@
+﻿@model List<HospitalProject.Models.FrequentlyAskedQuestion>
+@{
+    ViewBag.Title = "ListFAQAdmin";
+}
+
+    <section class="jobMain">
+        <h2>Frequently Asked Questions</h2>
+
+        @*Below code will create a search box with a button which will be used to search for Questions*@
+        <form action="/FrequentlyAskedQuestion/ListFAQAdmin" method="get">
+            <input type="text" id="searchKey" name="searchKey" />
+            <button class="btn btn-primary">
+                <span class="glyphicon glyphicon-search"></span> Search
+            </button>
+        </form>
+
+        @*Below code will create a pagniation which will separate the records into discrete pages*@
+        <div>
+            @{
+                <a href="/FrequentlyAskedQuestion/ListFAQAdmin?pagenum=@((int)ViewData["pageNum"]-1)&petsearchkey=@ViewData["searchKey"]">Prev</a>
+                @ViewData["pageSummary"]
+                <a href="/FrequentlyAskedQuestion/ListFAQAdmin?pagenum=@((int)ViewData["pageNum"]+1)&petsearchkey=@ViewData["searchKey"]">Next</a>
+            }
+        </div>
+
+
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <th width="15%">Category</th>
+                <th width="20%">Question</th>
+                <th width="40%">Answer</th>
+                <th width="20%" colspan="2">Action</th>
+            </tr>
+            @{
+                foreach (var faq in Model)
+                {
+                    <tr>
+                        <td>@faq.category</td>
+                        <td>@faq.questions</td>
+                        <td>@faq.answers</td>
+                        <td>
+                            <a href="/FrequentlyAskedQuestion/UpdateFAQAdmin/@faq.id" class="btn btn-warning">Update</a>
+                            <a href="/FrequentlyAskedQuestion/DeleteFAQAdmin/@faq.id" class="btn btn-danger" onclick="return validate();">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+
+        @*Link to create a new FAQ record. Link will appear like a button due to bootstrap styling*@
+        <div>
+            <a class="btn btn-primary" href="/FrequentlyAskedQuestion/AddFAQAdmin/" id="createBtn">Add FAQ </a>
+        </div>
+    </section>

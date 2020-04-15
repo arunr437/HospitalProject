@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "AddJobAdmin";
+}
+
+    <section class="jobMain">
+        <h2>AddJob</h2>
+
+        @*Form to Add a new Job into the Job table by the Admin*@
+        <form method="post" href="/Job/AddJobAdmin">
+            <div class="form-group">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Name:</label>
+                    <input class="form-control" id="name" name="name" type="text" />
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Skill:</label>
+                    <input class="form-control" id="skill" name="skill" type="text" />
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Description:</label>
+                    <textarea class="form-control" id="description" name="description" rows=5 type="text"></textarea>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Type:</label>
+                    <select class="form-control" name="type" id="type">
+                        <option value="Full-Time">Full-Time</option>
+                        <option value="Part-Time">Part-Time</option>
+                        <option value="Internship">Internship</option>
+                        <option value="Contract">Contract</option>
+                    </select>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Salary:</label>
+                    <input class="form-control" id="salary" name="salary" type="text" />
+                </div>
+            </div>
+            <!-- Link styled as a button to go back to the list page-->
+            <a class="btn btn-default" href="/Job/ListJobsAdmin">Back</a>
+            <!-- Button to submit the form-->
+            <input type="submit" class="btn btn-primary" value="Add Job">
+        </form>
+    </section>

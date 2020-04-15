@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ Html.RenderAction("ShowOnHome", "Notifications");}
+<!-- Slider -->
+<section class="">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="@Url.Content("~/Content/images/banner.jpg")" class="img-fluid d-block w-100" alt="Slider Image">
+                <div class="container">
+                    <div class="banner-caption">
+                        <img src="@Url.Content("~/Content/images/Logo_Light.png")" alt="">
+                        <h3 class="py-3 text-light">We need your help!</h3>
+                        <p>Donate today to the COVID-19 Relief Fund to help meet the emergency needs of your hospital.</p>
+                        <button class="btn btn-secondary-outline btn-cta" type="button" name="button">Sign In</button>
+                        <a class="btn btn-secondary btn-cta" href="@Url.Action("Add", "Donations")">Donate</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- Services -->
+<section class="services container py-5">
+    <h2 class="text-uppercase text-center py-5 text-secondary">Our Services</h2>
+    <div class="row">
+        <div class="col pb-4">
+            <div class="service py-5 mr-3 text-center">
+                <h5 class="pb-3 text-uppercase">Emergency</h5>
+                <img class="" src="@Url.Content("~/Content/images/emergency.jpg")" alt="Emergency">
+                <p class="py-3">Emergency rooms provide treatment of severe illnesses and life-threatening injuries 24 hours a day, 365 days a year.</p>
+                <button class="btn btn-readmore" type="button" name="button">Read More</button>
+            </div>
+        </div>
+        <div class="col pb-4">
+            <div class="service py-5 mr-3 text-center">
+                <h5 class="pb-3 text-uppercase">Responsibilities</h5>
+                <img class="" src="@Url.Content("~/Content/images/responsibilities.jpg")" alt="Responsibilities">
+                <p class="py-3">As a patient, you have both rights and responsibilities when it comes to your health and the health care services you receive at the hospital.</p>
+                <button class="btn btn-readmore" type="button" name="button">Read More</button>
+            </div>
+        </div>
+        <div class="col pb-4">
+            <div class="service py-5 mr-3 text-center">
+                <h5 class="pb-3 text-uppercase">Abuse report</h5>
+                <img class="" src="@Url.Content("~/Content/images/abuse-report.jpg")" alt="Abuse report">
+                <p class="py-3">At HSHN we are obligated to protect our residents and patients from abuse and neglect.</p>
+                <button class="btn btn-readmore" type="button" name="button">Read More</button>
+            </div>
+        </div>
+        <div class="col pb-4">
+            <div class="service py-5 mr-3 text-center">
+                <h5 class="pb-3 text-uppercase">Hospital Stay</h5>
+                <img class="" src="@Url.Content("~/Content/images/hospital-stay.jpg")" alt="Hospital Stay">
+                <p class="py-3">Registration is located just off the main lobby of the HSHN Blind River site. </p>
+                <button class="btn btn-readmore" type="button" name="button">Read More</button>
+            </div>
+        </div>
+        <div class="col pb-4">
+            <div class="service py-5 mr-3 text-center">
+                <h5 class="pb-3 text-uppercase">Tips & advice</h5>
+                <img class="" src="@Url.Content("~/Content/images/tips-advice.jpg")" alt="Tips & advice">
+                <p class="py-3">Humber Shore Health Network has a duty, under the Ontario Occupational Health and Safety Act to protect individuals that are sensitive to fragrances.</p>
+                <button class="btn btn-readmore" type="button" name="button">Read More</button>
+            </div>
+        </div>
+        <div class="col pb-4">
+            <div class="service py-5 mr-3 text-center">
+                <h5 class="pb-3 text-uppercase">Parking</h5>
+                <img class="" src="@Url.Content("~/Content/images/parking.jpg")" alt="Parking">
+                <p class="py-3">Employees, patients, and visitors of the HSHN Blind River site or Huron Shores Family Health Team (HSFHT) will be required to pay for parking.</p>
+                <button class="btn btn-readmore" type="button" name="button">Read More</button>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- News Fees -->
+<section class="container-fluid bg-light py-5">
+    <h2 class="text-uppercase text-center py-5 text-secondary">News Feed</h2>
+    <div class="container">
+        <div class="row">
+            <div class="news col text-center">
+                <a href="#">
+                    <h4 class="pb-3">Ontario reports 31 more deaths due to COVID-19, case count rises to 6,648</h4>
+                </a>
+                <img src="https://www.cp24.com/polopoly_fs/1.4886805.1586288417!/httpImage/image.jpg_gen/derivatives/landscape_620/image.jpg" alt="">
+                <p class="py-4">Ontario health officials reported 411 new COVID-19 infections on Saturday, along with 31 more deaths, taking the province’s total case count including recoveries to 6,648.</p>
+            </div>
+            <div class="news col text-center">
+                <a href="#">
+                    <h4 class="pb-3">Ford extends Ontario's emergency COVID-19 measures to April 23</h4>
+                </a>
+                <img src="https://www.cp24.com/polopoly_fs/1.4887749.1586344660!/httpImage/image.jpg_gen/derivatives/landscape_960/image.jpg" alt="">
+                <p class="py-4">The Ford government is extending Ontario’s emergency declaration until at least April 23, and adding several new measures to ban camping on Crown land and make it easier for hospitals to surge capacity.</p>
+            </div>
+        </div>
+
+    </div>
+</section>

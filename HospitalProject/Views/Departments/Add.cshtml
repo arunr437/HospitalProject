@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <section class="container py-5">
+        <form action="/Departments/Add" method="post">
+            <div class="row">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name"/>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="email"/>
+                </div>
+            </div>
+            <input type="submit" value="Add" class="btn btn-success"/>
+        </form>    
+    </section>

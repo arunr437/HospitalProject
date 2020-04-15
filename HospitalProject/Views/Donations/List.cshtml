@@ -1,0 +1,39 @@
+﻿@model List<HospitalProject.Models.Donation>
+@{
+    ViewBag.Title = "Donations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="container py-5">
+    <h2 class="text-center text-secondary py-3">Donations</h2>
+    <table class="table table-hover">
+    <thead>
+    <tr>
+        <th class="text-center" scope="col">Amount</th>
+        <th class="text-center" scope="col">Name</th>
+        <th class="text-center" scope="col">Email</th>
+        <th class="text-center" scope="col">Designation</th>
+        <th class="text-center" scope="col" colspan=2>Action</th>
+    </tr>
+    </thead>
+    <tbody class="my-5">
+        @foreach (var donation in Model)
+        {
+            <tr>
+                <td class="text-center">$@donation.Amount</td>
+                <td class="text-center">@donation.FirstName @donation.LastName</td>
+                <td class="text-center">@donation.Email</td>
+                @*For this title of the designation to be displayed here which is in another table,
+                    we need to include it in the controller*@
+                <td class="text-center">@donation.Designation.Title</td>
+                <td class="text-center">
+                    <a href="/Donations/Show/@donation.Id" class="btn btn-primary">Details</a>
+                    <a href="/Donations/ConfirmDelete/@donation.Id" class="btn btn-secondary">Delete</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+    </table>
+</section>
+<hr/>

@@ -1,0 +1,27 @@
+﻿@model List<HospitalProject.Models.Blog>
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="container py-5">
+    <h2 class="text-center text-secondary py-3">Latest News</h2>
+
+    <div class="row">
+        @foreach (var blog in Model)
+        {
+            <div class="card mb-3">
+                <div class="card-body">
+                    <a href="Show/@blog.Id">
+
+                        <h5 class="card-title">@blog.Title</h5>
+                    </a>
+
+                    <p class="card-text">@blog.Body.Substring(0, 155) ...</p>
+                    <p class="card-text"><small class="text-muted"></small></p>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+<hr/>

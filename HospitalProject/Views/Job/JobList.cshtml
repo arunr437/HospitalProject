@@ -1,0 +1,41 @@
+﻿@model List<HospitalProject.Models.Job>
+@{
+    ViewBag.Title = "Job List";
+}
+
+<section class="container py-5">
+
+    <h2>Job List</h2>
+
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Salary</th>
+            <th colspan="2">Action</th>
+        </tr>
+        @{
+            foreach (var job in Model)
+            {
+                <tr>
+                    <td><a href="/Job/ShowJob/@job.jobId">@job.name</a></td>
+                    <td>@job.skill</td>
+                    <td>@job.description</td>
+                    <td>@job.type</td>
+                    <td>@job.salary</td>
+                    <td>
+                        <a href="/Job/UpdateJob/@job.jobId" class="btn btn-warning">Update</a>
+                        <a href="/Job/DeleteJob/@job.jobId" onclick="return validate();" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
+    @*Link to create a new Job post. Link will appear like a button due to bootstrap styling*@
+    <div>
+        <a class="btn btn-primary" href="/Job/AddJob/" id="createBtn">Add Job </a>
+    </div>
+</section>
+<hr/>

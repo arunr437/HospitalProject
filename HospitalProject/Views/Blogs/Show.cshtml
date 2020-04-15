@@ -1,0 +1,20 @@
+﻿@model HospitalProject.Models.Blog
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="container py-5">
+    <h2 class="text-center text-secondary">@Model.Title</h2>
+    <hr/>
+
+    <div>
+        <img src="@Model.Image"/>
+    </div>
+    <p>@Model.Body</p>
+
+    <div>
+        <a href="/Blogs/List"><i class="fa fa-arrow-left"></i> Back</a>
+    </div>
+</section>
+<hr />

@@ -1,0 +1,35 @@
+﻿@model HospitalProject.Models.ViewModels.JobApplications
+@{
+    ViewBag.Title = "ShowJob";
+}
+    @*This page displays the details of a specific job*@
+    <section class="jobMain">
+        <h2>Job Details</h2>
+        @*Below code will display details about the Job.*@
+        <table class="table table-bordered  table-hover">
+            <tr>
+                <td>Name:</td>
+                <td>@Model.job.name</td>
+            </tr>
+            <tr>
+                <td>Skill:</td>
+                <td>@Model.job.skill</td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td>@Model.job.description</td>
+            </tr>
+            <tr>
+                <td>Type:</td>
+                <td>@Model.job.type</td>
+            </tr>
+            <tr>
+                <td>Salary:</td>
+                <td>@Model.job.salary</td>
+            </tr>
+        </table>
+
+        @*Link styled as buttons to go back to the list page abd to Apply for this job.*@
+        <a href="/Job/ListJobs/" class="btn btn-secondary">Back</a>
+        <a href="/Job/ApplyJob/@Model.job.jobId" class="btn btn-primary">Apply</a>
+    </section>

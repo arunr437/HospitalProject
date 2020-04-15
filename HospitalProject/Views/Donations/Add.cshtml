@@ -1,0 +1,100 @@
+﻿@*The type of the model for this view should be viewModel:*@
+@using System.Web.UI.WebControls
+@model HospitalProject.Models.ViewModels.NewDonationViewModel
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="container py-5">
+    <div class="d-form">
+
+        <h2 class="text-center text-secondary py-3">Make a Gift</h2>
+
+        @using (Html.BeginForm("Add", "Donations"))
+        {
+
+            <div class="form-group">
+                @*We need to specify where the properties are coming from (Donation, Province, Designation)
+                FirstName , LastName, ... should be coming from the Donation because we have defined the Donation 
+                itself in the viewModel => Example: Donation.FirstName*@
+                @*text input for the amount of gift with the label*@
+                @Html.LabelFor(d => d.Donation.Amount, new {@class = "font-weight-bold text-secondary"})
+                <div class="input-group mb-2 mr-sm-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">$</div>
+                    </div>
+                    @Html.TextBoxFor(d => d.Donation.Amount, new {@class = "form-control"})
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    @*text input for the first name of the donor with the label*@
+                    @Html.LabelFor(d => d.Donation.FirstName, new {@class = "font-weight-bold text-secondary"})
+
+                    @Html.TextBoxFor(d => d.Donation.FirstName, new {@class = "form-control"})
+                </div>
+                <div class="form-group col-md-6">
+                    @*text input for the last name of the donor with the label*@
+                    @Html.LabelFor(d => d.Donation.LastName, new {@class = "font-weight-bold text-secondary"})
+
+                    @Html.TextBoxFor(d => d.Donation.LastName, new {@class = "form-control"})
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group  col-md-6">
+                    @*text input for the email of the donor with the label*@
+                    @Html.LabelFor(d => d.Donation.Email, new {@class = "font-weight-bold text-secondary"})
+
+                    @Html.TextBoxFor(d => d.Donation.Email, new {@class = "form-control"})
+                </div>
+                <div class="form-group col-md-6">
+                    @*text input for the phone of the donor with the label*@
+                    @Html.LabelFor(d => d.Donation.Phone, new {@class = "font-weight-bold text-secondary"})
+
+                    @Html.TextBoxFor(d => d.Donation.Phone, new {@class = "form-control"})
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    @*DropDown list for the Provinces with the label*@
+                    @*To change the Label from provinceId to Province we add a data annotation in the Donation Class
+                on top of the Province property*@
+                    @Html.LabelFor(d => d.Donation.ProvinceId, new {@class = "font-weight-bold text-secondary"})
+
+                    @*DropDown List using HtmlHelper in MVC:
+            https://dotnettutorials.net/lesson/dropdownlist-html-helper-mvc/
+                SelectList -> The list of items for the drop down list
+                inside SelectList(The list of items, the name of the property in the Province class holding value for each item, holding the text for each Item)
+                after selectList(), the optional label on top of the list -> select province*@
+                    @Html.DropDownListFor(d => d.Donation.ProvinceId, new SelectList(Model.Provinces, "Id", "Initials"), "--- Select Province ---", new {@class = "form-control"})
+                </div>
+                <div class="form-group col-md-6">
+                    @*text input for the city where the donor is with the label*@
+                    @Html.LabelFor(d => d.Donation.City, new {@class = "font-weight-bold text-secondary"})
+
+                    @Html.TextBoxFor(d => d.Donation.City, new {@class = "form-control"})
+                </div>
+            </div>
+            <div class="form-group">
+                @*text input for the first name of the donor with the label*@
+                @Html.LabelFor(d => d.Donation.ZipCode, new {@class = "font-weight-bold text-secondary"})
+
+                @Html.TextBoxFor(d => d.Donation.ZipCode, new {@class = "form-control"})
+            </div>
+
+        @*The same drop down list is built for the Designation of the donation*@
+            <div class="form-group">
+                @Html.LabelFor(d => d.Donation.DesignationId, new {@class = "font-weight-bold text-secondary"})
+
+                @Html.DropDownListFor(d => d.Donation.DesignationId, new SelectList(Model.Designations, "Id", "Title"), "--- Area To Support ---", new {@class = "form-control"})
+            </div>
+
+            <button type="submit" class="btn btn-primary">Proceed</button>
+            <a class="btn btn-secondary" href="@Url.Action("Index", "Home")">Cancel</a>
+
+        }
+    </div>
+</section>
+<hr/>

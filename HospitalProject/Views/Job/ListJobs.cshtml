@@ -1,0 +1,54 @@
+﻿@model List<HospitalProject.Models.Job>
+@{
+    ViewBag.Title = "ListJobs";
+}
+
+    <section class="jobMain">
+
+        <h2>Jobs List</h2>
+
+        @*Below code will create a search box with a button which will be used to search for Jobs*@
+        <form action="/Job/ListJobs" method="get">
+            <input type="text" id="searchKey" name="searchKey" />
+            <button class="btn btn-primary">
+                <span class="glyphicon glyphicon-search"></span> Search
+            </button>
+        </form>
+
+        @*Below code will create a pagniation which will separate the records into discrete pages*@
+        <div>
+            @{
+                <a href="/Job/ListJobs?pagenum=@((int)ViewData["pageNum"]-1)&petsearchkey=@ViewData["searchKey"]">Prev</a>
+                @ViewData["pageSummary"]
+                <a href="/Job/ListJobs?pagenum=@((int)ViewData["pageNum"]+1)&petsearchkey=@ViewData["searchKey"]">Next</a>
+            }
+        </div>
+
+        @*Code to display the list of jobs*@
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <th width="15%">Title</th>
+                <th width="5%">Skill</th>
+                <th width="30%">Description</th>
+                <th width="10%">Type</th>
+                <th width="10%">Salary</th>
+                <th width="15%">Action</th>
+            </tr>
+            @{
+                foreach (var job in Model)
+                {
+                    <tr>
+                        <td><a href="/Job/ShowJob/@job.jobId">@job.name</a></td>
+                        <td>@job.skill</td>
+                        <td>@job.description</td>
+                        <td>@job.type</td>
+                        <td>@job.salary</td>
+                        <td>
+                            <a href="/Job/ShowJob/@job.jobId" class="btn btn-info">View</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+
+    </section>

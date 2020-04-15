@@ -1,0 +1,28 @@
+﻿@*Use this namespace because of one resultset*@
+@model HospitalProject.Models.Donation
+@{
+    ViewBag.Title = "Donation Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="container py-5">
+    <h2 class="text-center text-secondary py-3">Details</h2>
+    <div class="py-3">
+        <a href="/Donations/List"><i class="fa fa-arrow-left"></i> Back</a>
+    </div>
+    <div class="card" style="width: 20rem; margin: 0 auto;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Amount:</strong> $@Model.Amount</li>
+            <li class="list-group-item"><strong>Name:</strong> @Model.FirstName @Model.LastName</li>
+            <li class="list-group-item"><strong>Designation:</strong> @Model.Designation.Title</li>
+            <li class="list-group-item"><strong>Email:</strong> @Model.Email</li>
+            <li class="list-group-item"><strong>Phone:</strong> @Model.Phone</li>
+            <li class="list-group-item"><strong>Province:</strong> @Model.Province.Initials</li>
+            <li class="list-group-item"><strong>City:</strong> @Model.City</li>
+            <li class="list-group-item"><strong>Postal Code:</strong> @Model.ZipCode</li>
+            <a class="btn btn-primary" href="/Donations/Update/@Model.Id">Edit</a>
+        </ul>
+    </div>
+    
+</section>
+<hr

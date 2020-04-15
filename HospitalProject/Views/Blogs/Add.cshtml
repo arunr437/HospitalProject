@@ -1,0 +1,28 @@
+﻿@using System.Web.UI.WebControls
+@model HospitalProject.Models.Blog
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <section class="container py-5">
+        <h2 class="text-center text-secondary">New Post</h2>
+        @*Action name: Add, Controller: Blogs*@
+
+        @using (Html.BeginForm("Add", "Blogs"))
+        {
+            <div class="form-group">
+                @Html.LabelFor(b => b.Title, new { @class = "font-weight-bold text-secondary" })
+
+                @Html.TextBoxFor(b => b.Title, new { @class = "form-control" })
+
+            </div>
+            <div class="form-group">
+                @Html.TextArea("Body", null, new { @class = "form-control", @cols = 30, @rows = 10 })
+            </div>
+            <button class="btn btn-primary" type="submit" name="submit">Publish</button>
+            <a href="/Blogs/ListAdmin" class="btn btn-secondary">Cancel</a>
+
+        }
+
+    </section>

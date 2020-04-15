@@ -1,0 +1,40 @@
+﻿@model HospitalProject.Models.Application
+@{
+    ViewBag.Title = "ShowApplicationAdmin";
+}
+<section class="jobMain">
+    <h2>Show Application</h2>
+    <h2>Application Details</h2>
+    @*Below code will display details about the Application.*@
+    <table class="table table-bordered  table-hover">
+        <tr>
+            <td width="20%">Name:</td>
+            <td width="80%">@Model.firstName</td>
+        </tr>
+        <tr>
+            <td width="20%">Skill:</td>
+            <td width="80%">@Model.lastName</td>
+        </tr>
+        <tr>
+            <td width="20%">Description:</td>
+            <td width="80%">@Model.emailId</td>
+        </tr>
+        <tr>
+            <td width="20%">Cover Letter:</td>
+            <td width="80%">@Model.coverLetter</td>
+        </tr>     
+        <tr>
+            <td width="20%">Resume:</td>
+            <td width="80%">              
+                @*Link styled as buttons to "Download and View Resume"*@
+                <a href="~/Content/resume/@Model.resume" class="btn btn-primary">View</a>
+                <a href="~/Content/resume/@Model.resume" class="btn btn-primary" download="@Model.firstName"><i class="fa fa-download" download></i>Resume</a>
+            </td>
+        </tr>
+    </table>
+
+    @*Link styled as buttons to go back to the list page, Update the details and to Reject an applications*@
+    <a href="/Application/ListApplicationsAdmin/" class="btn btn-secondary">Back</a>
+    <a href="/Application/UpdateApplicationAdmin/@Model.applicationId" class="btn btn-warning">Update</a>
+    <a href="/Application/DeleteApplicationAdmin/@Model.applicationId" onclick="return validate();" class="btn btn-danger">Reject</a>
+</section>

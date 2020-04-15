@@ -1,0 +1,29 @@
+Job Portal:
+
+This feature has 2 tables. The Jobs table and the Application table.
+
+Job Table: The Jobs table has details about the job. There exists a One-Many relationship between Jobs and Applications.
+Which means One job can have many applications. Admin can open a particular job and see the list of applications the users have made. 
+
+
+Application Table: This table has details about the Application. This has a Many-One relationship with Jobs. 
+Users must first choose a job and fill an application for it. Many applications can be made by different users for a single job. Thus, 
+a Many-One relationship. 
+
+
+Frequently Asked Questions
+
+This feature has 1 table. 
+FrequesntlyAskedQuestion table: This table has the frequently asked questions, answers, and categories. The admin can add new FAQs, 
+update existing ones and delete FAQs, while the user can only see the list of FAQs 
+
+
+
+
+
+ 
+ 
+
+
+
+

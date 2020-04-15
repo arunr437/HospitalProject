@@ -1,0 +1,35 @@
+﻿@model HospitalProject.Models.ViewModels.AddDepartment
+@{
+    ViewBag.Title = "AddDepartment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <section class="container py-5">
+        <h2>Add Department to Feedbacktype</h2>
+        <form method="post" action="/Feedbacks/AddDepartment">
+            <div class="form-group">
+                <label>Department</label>
+                <select name="departmentid" class="form-control">
+                    @{
+                        foreach (var item in Model.Departments)
+                        {
+                            <option class="dropdown-item" value="@item.id">@item.name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>FeedbackType</label>
+                <select name="feedbackType" class="form-control">
+                    @{
+                        foreach (var item in Model.Feedbacks)
+                        {
+                            <option class="dropdown-item" value="@item.typeId">@item.name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <input class="btn btn-info" value="Submit" type="submit" />
+        </form>
+
+    </section>
+

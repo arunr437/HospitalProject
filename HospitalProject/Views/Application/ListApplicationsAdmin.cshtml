@@ -1,0 +1,72 @@
+﻿@model HospitalProject.Models.ViewModels.JobsApplications
+@{
+    ViewBag.Title = "ListApplicationAdmin";
+}
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+@*Below page is used to display the list of Applications for the Admin*@
+<section class="jobMain">
+    <div class="d-flex justify-content-between">
+        <h2>Application List</h2>
+        <div>
+            <a href="/Job/ListJobsAdmin" class="btn btn-primary">Job Management</a>
+        </div>
+    </div>
+
+    @*Below code will create a search box with a button which will be used to search for Applicant Namess*@
+    <form action="/Application/ListApplicationsAdmin" method="get">
+        <input type="text" id="searchKey" name="searchKey" />
+        <button class="btn btn-primary">
+            <span class="glyphicon glyphicon-search"></span> Search Name
+        </button>
+    </form>
+
+    @*Below code will create a pagniation which will separate the records into discrete pages*@
+    <div>
+        @{
+            <a href="/Application/ListApplicationsAdmin?pagenum=@((int)ViewData["pageNum"]-1)&petsearchkey=@ViewData["searchKey"]">Prev</a>
+            @ViewData["pageSummary"]
+            <a href="/Application/ListApplicationsAdmin?pagenum=@((int)ViewData["pageNum"]+1)&petsearchkey=@ViewData["searchKey"]">Next</a>
+        }
+    </div>
+
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th width="10%">First Name</th>
+            <th width="10%">Last Name</th>
+            <th width="20%">Job Applied</th>
+            <th width="20%">Email ID</th>
+            <th width="35%" colspan="3">Action</th>
+        </tr>
+        @{
+            foreach (var application in Model.applicationList)
+            {
+                <tr>
+                    <td>@application.firstName</td>
+                    <td>@application.lastName</td>
+                    <td>
+                        @{
+                            foreach (var job in Model.jobList)
+                            {
+                                if (job.jobId == application.JobId)
+                                {
+                                    <a href="/Job/ShowJobAdmin/@job.jobId">@job.name</a>
+                                }
+                            }
+                        }
+                    </td>
+                    <td>@application.emailId</td>
+                    <td>
+                        @*Link styled as buttons to 'Download Resume', View Application details, Edit Applicationa and to Reject and Application*@
+                        <a href="/Application/ShowApplicationAdmin/@application.applicationId" class="btn btn-primary">View</a>
+                        <a class="btn btn-primary" href="~/Content/resume/@application.resume" download="@application.firstName"><i class="fa fa-download"></i> Resume</a>
+                        <a href="/Application/UpdateApplicationAdmin/@application.applicationId" class="btn btn-warning">Edit</a>
+                        <a href="/Application/DeleteApplicationAdmin/@application.applicationId" class="btn btn-danger" onclick="return validate();">Reject</a>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
+</section>
+

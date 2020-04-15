@@ -1,0 +1,88 @@
+﻿@using System.Web.UI.WebControls
+@*The type of the model for this view should be viewModel:*@
+@model HospitalProject.Models.ViewModels.NewDonationViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="container py-5">
+    <div class="d-form">
+
+        <h2 class="text-center text-secondary py-3">Make a Gift</h2>
+
+        @using (Html.BeginForm("Update", "Donations"))
+        {
+
+                @*This form is similar to Add Donation but this form has the values of the selected donation that needs editing*@
+            //This does not make any sense to change the amount that has been paid as the gift,so amount is not
+            //changeable but other inormations regarding the donor can be modified
+            <p class="font-weight-bold text-secondary">Amount</p>
+            <p>$@Model.Donation.Amount</p>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    @*text input for the first name of the donor with the label*@
+                    @Html.LabelFor(d => d.Donation.FirstName, new { @class = "font-weight-bold text-secondary" })
+
+                    @Html.TextBoxFor(d => d.Donation.FirstName, new { Value = Model.Donation.FirstName, @class = "form-control" })
+                </div>
+                <div class="form-group col-md-6">
+                    @*text input for the last name of the donor with the label*@
+                    @Html.LabelFor(d => d.Donation.LastName, new { @class = "font-weight-bold text-secondary" })
+
+                    @Html.TextBoxFor(d => d.Donation.LastName, new { Value = Model.Donation.LastName, @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group  col-md-6">
+                    @*text input for the email of the donor with the label*@
+                    @Html.LabelFor(d => d.Donation.Email, new { @class = "font-weight-bold text-secondary" })
+
+                    @Html.TextBoxFor(d => d.Donation.Email, new { Value = Model.Donation.Email, @class = "form-control" })
+                </div>
+                <div class="form-group col-md-6">
+                    @*text input for the phone of the donor with the label*@
+                    @Html.LabelFor(d => d.Donation.Phone, new { @class = "font-weight-bold text-secondary" })
+
+                    @Html.TextBoxFor(d => d.Donation.Phone, new { Value = Model.Donation.Phone, @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    @*DropDown list for the Provinces with the label
+            Value of the input boxes are inside the attribute parameter -> Value = Model.Donation.Province*@
+                    @Html.LabelFor(d => d.Donation.ProvinceId, new { @class = "font-weight-bold text-secondary" })
+
+                    @Html.DropDownListFor(d => d.Donation.ProvinceId, new SelectList(Model.Provinces, "Id", "Initials"), new { Value = Model.Donation.Province, @class = "form-control" })
+                </div>
+                <div class="form-group col-md-6">
+                    @*text input for the city where the donor is with the label*@
+                    @Html.LabelFor(d => d.Donation.City, new { @class = "font-weight-bold text-secondary" })
+
+                    @Html.TextBoxFor(d => d.Donation.City, new { Value = Model.Donation.City, @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @*text input for the first name of the donor with the label*@
+                @Html.LabelFor(d => d.Donation.ZipCode, new { @class = "font-weight-bold text-secondary" })
+
+                @Html.TextBoxFor(d => d.Donation.ZipCode, new { Value = Model.Donation.ZipCode, @class = "form-control" })
+            </div>
+
+            @*The same drop down list is built for the Designation of the donation*@
+            <div class="form-group">
+                @Html.LabelFor(d => d.Donation.DesignationId, new { @class = "font-weight-bold text-secondary" })
+
+                @Html.DropDownListFor(d => d.Donation.DesignationId, new SelectList(Model.Designations, "Id", "Title"), new { Value = Model.Donation.Designation, @class = "form-control" })
+            </div>
+            //a hidden field to get the id from the form
+            //https://entityframework.net/knowledge-base/39405527/how-can-i-pass-hidden-field-value-from-view-to-controller-asp-net-mvc-5
+            @Html.HiddenFor(d=>d.Donation.Id);
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a class="btn btn-secondary" href="/Donations/Show/@Model.Donation.Id">Cancel</a>
+
+        }
+    </div>
+</section>
+<hr />

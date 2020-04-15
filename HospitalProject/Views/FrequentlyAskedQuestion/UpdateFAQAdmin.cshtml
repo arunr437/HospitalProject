@@ -1,0 +1,38 @@
+﻿@model HospitalProject.Models.FrequentlyAskedQuestion
+@{
+    ViewBag.Title = "UpdateFAQAdmin";
+}
+
+<section class="jobMain">
+    <h2>Update FAQ</h2>
+
+    @*//Form to update the FAQ details in the FrequentlyAskedQuestions table*@
+    <form method="post" href="/FrequentlyAskedQuestion/UpdateFAQAdmin">
+        <input type="hidden" name="id" value="@Model.id" />
+        <table class="table table-borderless">
+            <tr>
+                <td width="20%"><label>Questions:</label></td>
+                <td width="80%">
+                    <textarea class="form-control" id="questions" name="questions" rows="4" type="text">@Model.questions</textarea>
+                </td>
+            </tr>         
+            <tr>
+                <td width="20%"><label>Answers:</label></td>
+                <td width="80%">
+                    <textarea class="form-control" id="answers" name="answers" rows="4" type="text">@Model.answers</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td width="20%"><label>Category:</label></td>
+                <td width="80%">
+                    <input class="form-control" id="category" value="@Model.category" name="category" type="text" />
+                </td>
+            </tr>
+        </table>
+
+        <!-- Link styled as a button to go back to the list page-->
+        <a class="btn btn-default" href="/FrequentlyAskedQuestion/ListFAQAdmin">Back</a>
+        <!-- Button to submit the form-->
+        <input type="submit" class="btn btn-primary" value="Update">
+    </form>
+</section>

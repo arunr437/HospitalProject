@@ -1,0 +1,176 @@
+﻿body {
+    overflow-x: hidden;
+}
+
+
+.container-fluid {
+    width: 100vw;
+    padding: 0;
+}
+
+.btn {
+    border-radius: 0;
+}
+
+.btn-cta {
+    padding: 10px 40px;
+    font-size: 1.2rem;
+}
+
+.btn-primary {
+    background-color: #0b665d;
+    border: 1px solid #0b665d;
+    color: #fff;
+    border-radius: 0;
+}
+
+.btn-primary-outline {
+    border: 1px solid #0b665d;
+    color: #0b665d;
+    background: #fff;
+}
+
+.btn-primary:hover {
+    border: 1px solid #0b665d;
+    color: #0b665d;
+    background: #fff;
+}
+
+.btn-secondary {
+    color: #0b665d;
+    background: #fff;
+}
+
+.btn-secondary:hover {
+    border: 1px solid #fff;
+    background: #0b665d;
+}
+
+.btn-secondary-outline {
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.btn-secondary-outline:hover {
+    color: #0b665d;
+    background: #fff;
+}
+
+.notification {
+    color: #898989;
+}
+
+input {
+    border-radius: 0 !important;
+}
+
+.input-group-text {
+    background: #fff;
+    border-radius: 0;
+}
+
+.nav-item {
+    border-radius: 0 !important;
+    border: 1px solid #898989;
+    border-left-width: 0;
+    padding: 15px 0;
+}
+
+.main-menu .nav-item:first-child {
+    border-left-width: 1px;
+}
+
+.nav-item:hover {
+    background: #0b665d;
+    color: #fff;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background: #0b665d;
+}
+a {
+    color: #5b5b5b;
+}
+
+    a:hover {
+        color: #0b665d;
+        text-decoration: underline;
+    }
+
+
+main {
+}
+.form-control:focus {
+    color: #0b665d;
+    background-color: #fff;
+    border-color: #0b665d82;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem #0b665d54;
+}
+
+footer {
+    color: #5b5b5b;
+}
+.quick-link:hover {
+    color: #0b665d;
+    text-decoration: underline;
+}
+.btn-readmore {
+    background: #5b5b5b;
+    color: #fff;
+}
+
+.btn-readmore:hover {
+    background: #0b665d;
+    color: #fff;
+}
+
+.service {
+    border: 1px solid #898989;
+}
+
+.service img {
+    width: 270px;
+    height: 150px;
+    object-fit: cover;
+}
+
+    .service p {
+        width: 270px;
+        margin: 0 auto;
+        height: 150px;
+    }
+
+.news {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.news img {
+    width: 500px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.banner-caption {
+    width: 30vw;
+    color: #fff;
+    position: absolute;
+    top: 30%;
+}
+.display-4 {
+    font-size: 2rem;
+}
+.d-form {
+    padding: 0 15%;
+}
+
+.jobMain {
+    margin: 0 auto;
+    width: 90%;
+    padding: 5%;
+}
+
+#admin {
+    float: right;
+}
